@@ -1,13 +1,18 @@
 import { AppBar, Box, Container, IconButton, Toolbar, Typography,InputBase, MenuItem, Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const pages = ['Explore', 'Collection', 'Community']
 
-function Navbar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  
+function Navbar({onSearch}) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  let [query, setQuery] = useState('');
+
+  useEffect(() => {
+    onSearch(query)
+  }, [query])
+
   const handleOpenNavMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -15,6 +20,11 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorEl(null);
   };
+
+  function searchChanged(event) {
+    console.log("Search Changed:", event.target.value)
+    setQuery(event.target.value);
+  }
 
     return (
         <AppBar position="fixed">
@@ -54,7 +64,7 @@ fontWeight: 400 }}>Gallery Galore</Typography>
             </Box>
 <Box class="search">
     <Box class="SearchIconWrapper" sx={{width: '500px'}}>
-<InputBase placeholder='Search Images here' startAdornment={
+<InputBase onChange={searchChanged} placeholder='Search Images here' startAdornment={
     <SearchIcon style={{ color: 'grey', position: "absolute", left: "10px" }} />}  sx={{
   '& .MuiInputBase-input': {
       border: '1px solid black', 

@@ -33,19 +33,6 @@ function App() {
     }
 };
   useEffect(() => {
-    // const fetchData = async (url) => {
-    //     try {
-    //         const response = await axios.get(url, {
-    //             headers: {
-    //                 Authorization: 'Client-ID wPUjz-naITz0wFjwIMooXqsvMSAofWta9iNdqbVd8ow'
-    //             }
-    //         });
-    //         console.log(response.data);
-    //         setPhotos(response.data);
-    //     } catch (error) {
-    //         console.log('Error fetching photos:', error)
-    //     }
-    // };
     fetchPhotos();
 }, [])
 
@@ -58,7 +45,7 @@ const handleSearch = (query) => {
     <ThemeProvider theme={theme}>
     <div className="App">
       <Navbar onSearch={handleSearch}/>
-      <Hero photos={photos} onSearch={handleSearch}/>
+      <Hero onSearch={handleSearch}/>
       <Main photos={photos}  />
     </div>
     </ThemeProvider>
