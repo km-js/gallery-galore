@@ -17,7 +17,7 @@ function Hero({ onSearch }) {
   }, [query])
 
   function searchChanged(event) {
-    console.log("Search Changed:", event.target.value)
+    //console.log("Search Changed:", event.target.value)
     setQuery(event.target.value);
   }
 

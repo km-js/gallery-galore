@@ -85,9 +85,6 @@ function Navbar({ onSearch }) {
                 }} />
             </Box>
           </Box>
-
-
-
         </Toolbar>
       </Container>
     </AppBar>
